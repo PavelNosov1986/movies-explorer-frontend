@@ -1,0 +1,15 @@
+.footer__section {
+    padding: 0 70px;
+}
+
+@media (max-width:920px) {
+    .footer__section {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width:720px) {
+    .footer__section {
+        padding: 0 10px;
+    }
+}
