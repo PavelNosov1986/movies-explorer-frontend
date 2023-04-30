@@ -13,7 +13,7 @@ const SearchForm = ({isSearchBorder}) => {
                 <div className='search-string'>
                     <form className="search__form" >
                         <img className="search__form-img-wand" src={wand} alt="Граница" />
-                        <input className="search__form-txt" type="text" placeholder='Фильм' />
+                        <input className="search__form-txt" type="text" placeholder='Фильм' required />
                         <button className="search__form-btn" > <img className="search__form-img" src={search} alt="Лупа" /></button>
                     </form>
                     <div className='toggle-container'>

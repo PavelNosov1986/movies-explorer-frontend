@@ -12,14 +12,13 @@ const SavedMovies = ({ isMoviesPage }) => {
     return (
         <main className={MoviesClassName}>
             <HeaderSelect />
-            <SearchForm isSearchBorder={true} />
-            <section className='movies__cards'>
-                <MoviesCard isNewFilm={false} />
-                <MoviesCard isNewFilm={false} />
-                <MoviesCard isNewFilm={false} />
-                <MoviesCard isNewFilm={false} />
-                <MoviesCard isNewFilm={false} />
-            </section>
+            <SearchForm isSearchBorder={false} />
+            <ul className='movies__cards'>
+               <li><MoviesCard isNewFilm={false} /></li> 
+               <li><MoviesCard isNewFilm={false} /></li>
+               <li><MoviesCard isNewFilm={false} /></li>
+               <li><MoviesCard isNewFilm={false} /></li>
+            </ul>
             <Footer className='footer_movies' />
         </main>
     );

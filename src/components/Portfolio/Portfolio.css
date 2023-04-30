@@ -51,7 +51,7 @@
 @media (max-width:720px) {
     .portfolio__links {
         margin-bottom: 94px;
-        margin-top: 3px;        
+        margin-top: 3px;
     }
 }
 
@@ -69,7 +69,7 @@
 @media (max-width:720px) {
     .portfolio__link-item {
         display: flex;
-    align-items: center;
+        align-items: center;
         background-size: 10px;
         margin-bottom: 0;
         background-position: bottom 34px right 2px;
@@ -87,6 +87,7 @@
 }
 
 .portfolio__link {
+    display: block;
     color: #FFFFFF;
     text-decoration: none;
     font-weight: 400;

@@ -9,25 +9,25 @@ const Movies = () => {
     return (
         <main className='movies'>
             <HeaderSelect />
-            <SearchForm isSearchBorder={true} />
-            <section className='movies__cards'>
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-                <MoviesCard isNewFilm={true} />
-            </section>
+            <SearchForm isSearchBorder={false} />
+            <ul className='movies__cards'>
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li> 
+              <li> <MoviesCard isNewFilm={true} /></li>                
+            </ul>
             <button className='movies__btn-next'>Ещё</button>
             <Footer className='footer_movies' />
         </main>

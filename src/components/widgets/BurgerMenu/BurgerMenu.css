@@ -49,12 +49,12 @@
 /* контейнер меню */
 .menu__box {
   display: flex;
-  align-items:center;
+  align-items: center;
   flex-direction: column;
   position: fixed;
   visibility: hidden;
   top: 0;
-  left: -100%;
+  right: 0;
   width: 520px;
   height: 100%;
   margin: 0;
@@ -64,7 +64,7 @@
 }
 
 @media (max-width:755px) {
-  .menu__box{
+  .menu__box {
     width: 320px;
   }
 }
@@ -101,28 +101,20 @@
 
 #menu__toggle:checked~.menu__box {
   visibility: visible;
-  left: 246px;
   z-index: 1;
- }
-
-
- @media (max-width:755px) {
-  #menu__toggle:checked~.menu__box{
-    left: 0;
-  }
 }
 
-.header-profile__account_burger{
-margin-top: 621px;
+.header-profile__account_burger {
+  margin-top: 621px;
 }
 
 @media (max-width:755px) {
-  .header-profile__account_burger{
+  .header-profile__account_burger {
     margin-top: 444px;
-    }
+  }
 }
 
-.logo__burger{
+.logo__burger {
   position: absolute;
   height: 38px;
   width: 38px;
@@ -131,6 +123,6 @@ margin-top: 621px;
 
 @media (max-width:500px) {
   .logo__burger {
-      margin:0 0 46px;
+    margin: 0 0 46px;
   }
 }

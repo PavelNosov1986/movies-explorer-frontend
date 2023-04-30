@@ -3,9 +3,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
- }
+}
 
- @media (max-width:834px) {
+@media (max-width:834px) {
   .movies {
     padding: 0 30px;
   }
@@ -17,11 +17,7 @@
   }
 }
 
- .movies_saved{
-  height: 100vh;
- }
-
- @media (max-width:755px) {
+@media (max-width:755px) {
   .movies_saved {
     height: auto;
   }
@@ -46,6 +42,7 @@
   .movies__cards {
     margin: 47px auto 76px;
     grid-row-gap: 21px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   }
 }
 
@@ -72,6 +69,6 @@
   }
 }
 
-.footer_movies{
+.footer_movies {
   padding: 0;
 }
