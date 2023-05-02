@@ -1,0 +1,27 @@
+@import './vendor/normalize.css';
+@import './vendor/fonts/fonts.css';
+
+/* * {
+outline: 1px solid red;
+} */
+
+.page {
+  font-family: 'Inter', Arial, sans-serif;
+  box-sizing: border-box;
+  background: #202020;
+  color: #FFFFFF;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+ }
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,126 @@
+#techs {
+    background: #272727;
+}
+
+@media (max-width:740px) {
+    #techs {
+        height: 651px;
+        padding: 0 18px;
+    }
+}
+
+.tab__container-title_techs {
+    height: 138px;
+}
+
+
+@media (max-width:740px) {
+    .tab__container-title_techs  {
+        height: 129px;
+        border-bottom: 1px solid  #000000;;
+    }
+}
+
+.tab__title_techs {
+    margin-top: 90px;
+}
+
+@media (max-width:740px) {
+    .tab__title_techs {
+        margin-top: 79px;
+    }
+}
+
+.techs__subtitle {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    text-align: center;
+    margin: 90px auto 27px;
+}
+
+@media (max-width:920px) {
+    .techs__subtitle {
+        margin: 83px auto 23px;
+    }
+}
+
+@media (max-width:740px) {
+    .techs__subtitle {
+        font-size: 30px;
+        line-height: 36px;
+        margin: 61px auto 23px;
+    }
+}
+
+.techs__description {
+    max-width: 460px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+    margin: 0px auto 100px;
+}
+
+@media (max-width:920px) {
+    .techs__description {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0px auto 82px;
+    }
+}
+
+@media (max-width:740px) {
+    .techs__description {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0px auto 52px;
+    }
+    }
+
+.techs__container-button-link {
+    max-width: 668px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width:920px) {
+    .techs__container-button-link {
+        max-width: 649px;
+    }
+}
+
+@media (max-width:700px) {
+    .techs__container-button-link {
+        width: 178px;
+        height: 258px;
+    }
+}
+
+.techs__button-link {
+    width: 90px;
+    height: 60px;
+    background: #303030;
+    border-radius: 10px;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+}
+
+@media (max-width:920px) {
+    .techs__button-link {
+        width: 84px;
+        height: 57px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

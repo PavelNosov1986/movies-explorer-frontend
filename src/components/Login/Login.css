@@ -1,0 +1,11 @@
+.auth__save_login{
+    margin-top: 176px;
+    min-width: 396px;
+}
+
+@media (max-width:500px) {
+    .auth__save_login{
+        min-width: 275px;
+        margin-top: 264px;
+    }
+}

@@ -1,0 +1,93 @@
+.header {
+    background: #073042;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+}
+
+@media (max-width:920px) {
+    .header {
+        padding: 0 29px;
+        height: 67px;
+    }
+}
+
+@media (max-width:720px) {
+    .header {
+        padding: 0 14px;
+    }
+}
+
+.header__container-sign-in-up {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 183px;
+    display: flex;
+}
+
+@media (max-width:720px) {
+    .header__container-sign-in-up {
+        width: 137px;
+    }
+}
+
+.header__button-signup {
+    min-width: 77px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    border: none;
+    background: none;
+    min-width: 76px;
+    height: 32px;
+    border-radius: 3px;
+}
+
+
+@media (max-width:740px) {
+    .header__button-signup {
+        font-size: 10px;
+        line-height: 16px;
+        min-width: 54px;
+        height: 26px;
+    }
+}
+
+.header__button-signup:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    min-width: 76px;
+    height: 32px;
+    border-radius: 3px;
+}
+
+.header__button-signin {
+    min-width: 76px;
+    height: 32px;
+    background: #3DDC84;
+    border: none;
+    padding: 0px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@media (max-width:740px) {
+    .header__button-signin {
+        font-size: 10px;
+        line-height: 16px;
+        min-width: 54px;
+        height: 26px;
+    }
+}
+
+.header__button-signin:hover {
+    cursor: pointer;
+    border: 2px solid white;
+}

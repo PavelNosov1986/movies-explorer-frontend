@@ -1,0 +1,41 @@
+.header-profile {
+    box-sizing: border-box;
+    height: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-profile__container-movies {
+    min-width: 212px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-profile__title {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.header-profile__title:hover {
+    color: #EE3465;
+    font-size: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.header-profile__account {
+    display: flex;
+}
+
+.header-profile__account:hover {
+    border-radius: 8px;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+    width: 120px;
+    height: 50px;
+    background: #EE3465;
+}

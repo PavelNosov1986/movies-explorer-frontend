@@ -1,0 +1,154 @@
+.search {
+  box-sizing: border-box;
+  display: flex;
+  max-width: 1140px;
+  margin: 0 auto;
+  height: 212px;
+  align-items: center;
+}
+
+
+@media (max-width:1240px) {
+  .search {
+    max-width: 708px;
+    height: 272px;
+    margin: 36px auto 12px;
+  }
+}
+
+.search__border {
+  border-bottom: 1px solid #424242;
+}
+
+.search-string {
+  display: flex;
+  min-width: 1140px;
+  height: 72px;
+  background: #2F2F2F;
+  border-radius: 9px;
+}
+
+@media (max-width:1240px) {
+  .search-string {
+    min-width: 708px;
+  }
+}
+
+@media (max-width:755px) {
+  .search-string {
+    min-width: 300px;
+    flex-direction: column;
+  }
+}
+
+.toggle-container {
+  display: flex;
+  text-align: center;
+  min-width: 186px;
+  margin: auto;
+}
+
+@media (max-width:755px) {
+  .toggle-container {
+    min-width: 148px;
+    margin: 46px auto;
+  }
+}
+
+.search__form {
+  position: relative;
+  display: flex;
+  min-width: 913px;
+  align-items: center;
+}
+
+@media (max-width:1240px) {
+  .search__form {
+    min-width: 500px;
+  }
+}
+
+
+@media (max-width:755px) {
+  .search__form {
+    min-width: 300px;
+  }
+}
+
+.search__form-img-wand {
+  position: absolute;
+  left: 913px;
+}
+
+@media (max-width:1240px) {
+  .search__form-img-wand {
+    left: 499px;
+  }
+}
+
+@media (max-width:755px) {
+  .search__form-img-wand {
+    display: none;
+  }
+}
+
+.search__form-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search__title-short-films {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  margin: auto 10px;
+}
+
+.search__form-img:hover {
+  position: absolute;
+  top: 10px;
+  width: 85px;
+  height: 50px;
+}
+
+.search__form-txt {
+  cursor: pointer;
+  min-width: 729px;
+  color: white;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  height: 46px;
+  background: #2F2F2F;
+  border-radius: 9px;
+  border: none;
+  margin-bottom: 0;
+  padding-left: 15px;
+  background-image: url("../../../images/icon-search.svg");
+  background-repeat: no-repeat;
+  background-position: 18px;
+  padding-left: 65px;
+}
+
+.search__form-txt::placeholder {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #8B8B8B;
+}
+
+@media (max-width:1240px) {
+  .search__form-txt {
+    min-width: 332px;
+  }
+}
+
+@media (max-width:755px) {
+  .search__form-txt {
+    background-image:none;
+    height: 69px;
+    padding-left: 19px;
+    min-width: 182px;
+  }
+}
