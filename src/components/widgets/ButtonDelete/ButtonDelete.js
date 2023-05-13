@@ -1,5 +1,4 @@
 import React from 'react';
-import './ButtonDelete.css'
 import deleteBtn from '../../../images/delete-btn.svg'
 
 const ButtonDelete = () => {

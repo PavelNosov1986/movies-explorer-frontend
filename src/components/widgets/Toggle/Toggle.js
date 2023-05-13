@@ -1,12 +1,22 @@
 import React from 'react';
 import './Toggle.css'
+import { useState } from 'react';
 
-const Toggle = () => {
+const Toggle = ({value, onChange}) => {
+    //const [isShortFilm, setIsShortFilm] = useState(false)
+
+    function handleChange() {
+        //setIsShortFilm(!isShortFilm);
+        //localStorage.setItem('toggle', isShortFilm)
+        onChange()
+     }
+
+
     return (
         <main className='toggle'>
-                       <label className="switch">
-                <input type="checkbox" />
-                <span class="slider round"></span>
+            <label className="switch">
+                <input type="checkbox" onChange={handleChange} checked={value} />
+                <span className="slider round"></span>
             </label>
         </main>
     );
