@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css'
 import HeaderProfile from '../widgets/HeaderProfile/HeaderProfile'
 import { Link } from 'react-router-dom';
+import { getMeApi, updateUserApi } from '../../utils/MainApi';
 
 
 const Profile = () => {
-    const [name, setName] = useState('Павел');
-    const [email, setEmail] = useState('nosovpp86@gmail.com');
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+
+    useEffect(() => {
+        getMeApi().then((response) => {
+            setEmail(response.email)
+            setName(response.name)
+        })
+    }, []);
+
 
     function handleEmail(evt) {
         setEmail(evt.target.value);
@@ -18,6 +27,10 @@ const Profile = () => {
 
     function handleSubmit(evt) {
         evt.preventDefault();
+        updateUserApi({name: name, email: email}).then((response)=>{
+            setEmail(response.email)
+            setName(response.name)
+        })
     }
 
     return (

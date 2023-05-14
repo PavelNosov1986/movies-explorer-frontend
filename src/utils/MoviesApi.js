@@ -9,3 +9,8 @@ export const getMoviesApi = () =>
     .catch((error) => {
       console.error(error);
     });
+
+   
+
+   
+  

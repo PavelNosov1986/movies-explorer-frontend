@@ -1,16 +1,11 @@
 import React from 'react';
 import './Toggle.css'
-import { useState } from 'react';
 
-const Toggle = ({value, onChange}) => {
-    //const [isShortFilm, setIsShortFilm] = useState(false)
+const Toggle = ({ value, onChange }) => {
 
     function handleChange() {
-        //setIsShortFilm(!isShortFilm);
-        //localStorage.setItem('toggle', isShortFilm)
         onChange()
-     }
-
+    }
 
     return (
         <main className='toggle'>

@@ -2,49 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './SearchForm.css'
 import Toggle from '../Toggle/Toggle';
 import search from '../../../images/search.svg';
-// import iconSearch from '../../../images/icon-search.svg'
+//import iconSearch from '../../../images/icon-search.svg'
 import wand from '../../../images/wand.svg'
 
 
-const SearchForm = ({ isSearchBorder, onSearch, isSaved }) => {
-    const [valueSearch, setValueSeurch] = useState('');
-    const [isShortFilm, setIsShortFilm] = useState(false)
-    const [error, setError] = useState(false)
-
-    useEffect(() => {
-        if (isSaved) {
-            const searchResults = JSON.parse(
-                localStorage.getItem('search')
-            )
-
-            const toggleResults = localStorage.getItem('toglle')
-            let value = toggleResults === 'true' ? true : false
-            setValueSeurch(searchResults)
-            setIsShortFilm(value)
-           
-        }
-        else {
-            const searchResults = JSON.parse(
-                localStorage.getItem('searchSave')
-            )
-            const toggleResults = localStorage.getItem('toggleSave')
-            let value = toggleResults === 'true' ? true : false
-
-            setValueSeurch(searchResults)
-            setIsShortFilm(value)
-        }
-
-    }, []);
-
+const SearchForm = ({ isSearchBorder, onSearch, onToggle, searchValue, isShort }) => {
+    const [valueSearch, setValueSeurch] = useState(searchValue);
+    const [isShortFilm, setIsShortFilm] = useState(isShort)
+    const [error, setError] = useState(false)   
 
     const handleClick = (e) => {
         e.preventDefault()
         if (valueSearch) {
             onSearch(valueSearch);
-            if (isSaved)
-                localStorage.setItem('search', JSON.stringify(valueSearch))
-            else
-                localStorage.setItem('searchSave', JSON.stringify(valueSearch))
             setError(false);
         }
         else {
@@ -53,13 +23,8 @@ const SearchForm = ({ isSearchBorder, onSearch, isSaved }) => {
     }
 
     const handleOnChange = () => {
-                let value = isShortFilm === ('true' ? true : false)
-        if (isSaved)
-            localStorage.setItem('toglle', !value)
-        else
-            localStorage.setItem('toggleSave', !value)
-
         setIsShortFilm(!isShortFilm)
+        onToggle(!isShortFilm)
     }
 
     const SearchFormClassName = (`${isSearchBorder ? 'search' : 'search search__border'}`);

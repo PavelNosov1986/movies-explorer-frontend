@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import save from '../../../images/save.svg'
 import saveDelete from '../../../images/saveDelete.svg'
  
-const ButtonSave = () => {
+const ButtonSave = ({isSaved, handleMovieLike}) => {
 
-    const [btnSave, setBtnSave] = useState(false);
+    //const [btnSave, setBtnSave] = useState(false);
 
     function handleClick() {
-        setBtnSave(!btnSave);
+        //setBtnSave(!btnSave);
+        handleMovieLike();
+        // handleMovieLikeDelete();        
     }
 
     return (
         <>
             <button className="card-movie__save-btn" onClick={handleClick}><img className="card-movie__save-img"
-                src={btnSave ? save : saveDelete} alt="Сохранить" /></button>
+                src={isSaved ? save : saveDelete} alt="Сохранить" /></button>
         </>
     );
 };
