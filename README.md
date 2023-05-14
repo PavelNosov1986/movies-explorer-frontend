@@ -7,3 +7,5 @@
 * IP 158.160.49.156
 * Frontend https://movies.nosovpavel.nomoredomains.work
 * Backend https://api.movies.nosovpavel.nomoredomains.work
+
+ * https://github.com/PavelNosov1986/movies-explorer-frontend/pull/3
