@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import { login } from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form'
+import { isEmail } from '../../utils/constants';
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors, isValid },
+    } = useForm({ mode: 'onChange' });
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, password] = watch(['email', 'password']);
+
     let navigate = useNavigate();
 
-    function handleEmail(evt) {
-        setEmail(evt.target.value);
-    }
-    function handlePassword(evt) {
-        setPassword(evt.target.value);
-    }
-
-    function handleSubmit(evt) {
-        evt.preventDefault();
+    function handleFormSubmit() {
         if (!email || !password) {
             return;
         }
@@ -28,6 +28,7 @@ const Login = () => {
             .then((res) => {
                 if (res.token) {
                     localStorage.setItem("JWT_SECRET", res.token);
+                    setIsLoggedIn(true);
                     navigate("/movies");
                 }
             })
@@ -39,7 +40,6 @@ const Login = () => {
                 }
             });
     }
-
 
     return (
         <main className="auth">
@@ -53,34 +53,40 @@ const Login = () => {
                 <h3 className="auth__hint">E-mail</h3>
                 <input
                     className="auth__input"
-                    onChange={handleEmail}
-                    value={email}
-                    name="email"
                     type="email"
                     placeholder="Введите E-mail"
-                    minLength="2"
-                    maxLength="30"
                     title="Введите адрес электронной почты"
-                    required
+                    {...register('email', {
+                        required: 'Это поле обязательно к заполнению.',
+                        pattern: {
+                            value: isEmail,
+                            message: 'E-mail введен не верно',
+                        },
+                    })}
+
                 />
-                <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+                {errors.email && (<span className='auth__input-error'>{errors.email.message}</span>)}
 
                 <h3 className="auth__hint">Пароль</h3>
                 <input
                     className="auth__input"
-                    onChange={handlePassword}
-                    value={password}
-                    name="password"
                     type="password"
                     placeholder="Придумайте и введите пароль"
-                    minLength="2"
-                    maxLength="30"
                     title="Придумайте и введите пароль"
-                    required
+                    {...register('password', {
+                        required: 'Это поле обязательно к заполнению.',
+                        minLength: {
+                            value: 4,
+                            message: 'Пароль должен содержать минимум 4 символа',
+                        },
+                    })}
                 />
-                <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+                {errors.password && (<span className='auth__input-error'>{errors.password.message}</span>)}
 
-                <button onClick={handleSubmit} className="auth__save auth__save_login">Войти</button>
+                <button onClick={handleSubmit(handleFormSubmit)} className={`${isValid ? 'auth__save-active auth__save_login'
+                    : 'auth__save-inactive auth__save_login'}`}>
+                    Войти
+                </button>
 
                 <footer className="auth__footer" >
                     <p className="auth__question-link">Ещё не зарегистрированы?</p>

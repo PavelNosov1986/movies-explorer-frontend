@@ -9,22 +9,26 @@ import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import ProtectedRoute from '../ProtectedRoute/ProtecterRoute';
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/movies' element={<Movies />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/saved-movies' element={<SavedMovies />} />
-            <Route path='/signup' element={<Register />} />
-            <Route path='/signin' element={<Login />} />
+            <Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
+            <Route element={<ProtectedRoute isLoggedIn={isLoggedIn}/>}>
+              <Route path='/movies' element={<Movies />} />
+              <Route path='/profile' element={<Profile isLoggedIn={isLoggedIn} />} />
+              <Route path='/saved-movies' element={<SavedMovies />} />
+            </Route>
+            <Route path='/signup' element={<Register setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/signin' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>

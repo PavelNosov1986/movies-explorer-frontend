@@ -1,4 +1,4 @@
-.headerProfile_profile{
+.headerProfile_profile {
     padding: 0 70px;
 }
 
@@ -12,7 +12,7 @@
     justify-content: space-between;
 }
 
-.auth__hint_profile{
+.auth__hint_profile {
     color: #fff;
 }
 
@@ -41,7 +41,7 @@
 
 .auth__save_profile:hover {
     font-size: 15px;
-    background: #EE3465;
+    background: green;
     cursor: pointer;
 }
 

@@ -93,7 +93,7 @@
     margin-top: 20px;
 }
 
-.auth__save {
+.auth__save-active {
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
@@ -108,6 +108,20 @@
     transition: 0.5s linear;
 }
 
+.auth__save-inactive {
+    background: gray;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 3px;
+    min-width: 396px;
+    height: 46px;
+    border: none;
+    margin-top: 86px;
+    transition: 0.5s linear;
+}
 
 @media (max-width:500px) {
     .auth__save {
@@ -118,9 +132,9 @@
 }
 
 
-.auth__save:hover {
+.auth__save-active:hover {
     cursor: pointer;
-    background: #EE3465;
+    background: green;
 }
 
 .auth__footer {
@@ -163,7 +177,7 @@
 }
 
 .auth__signup-link:hover {
-    color: #EE3465;
+    color: green;
     font-size: 15px;
 }
 

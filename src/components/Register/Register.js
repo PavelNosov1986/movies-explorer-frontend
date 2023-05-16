@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Register.css'
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
-import { register } from '../../utils/MainApi';
+import { registerMain } from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { isName, isEmail } from '../../utils/constants';
 
 const Register = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors, isValid },
+    } = useForm({ mode: 'onChange' });
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, email, password] = watch(['name', 'email', 'password']);
+
     let navigate = useNavigate();
 
-    function handleSubmit(evt) {
-        evt.preventDefault();
-        register({ name, email, password })
+    function handleFormSubmit() {
+        registerMain({ name, email, password })
             .then(() => {
                 navigate("/signin");
             })
@@ -26,19 +32,6 @@ const Register = () => {
             });
     }
 
-    function handleName(evt) {
-        setName(evt.target.value);
-    }
-
-    function handleEmail(evt) {
-        setEmail(evt.target.value);
-    }
-
-    function handlePassword(evt) {
-        setPassword(evt.target.value);
-    }
-
-
     return (
         <main className="auth">
 
@@ -47,55 +40,64 @@ const Register = () => {
                 <h2 className='auth__welcome'>Добро пожаловать!</h2>
             </header>
 
-
             <form className="auth__form" >
 
                 <h3 className="auth__hint">Имя</h3>
                 <input
                     className="auth__input"
-                    onChange={handleName}
-                    value={name}
-                    name="name"
+                    {...register('name', {
+                        required: 'Это поле обязательно к заполнению.',
+                        pattern: {
+                            value: isName,
+                            message:
+                                'Имя может содержать русские и латинские буквы, дефис, пробел.',
+                        },
+                    })}
                     type="name"
                     placeholder="Введите имя пользователя"
-                    minLength="2"
-                    maxLength="200"
                     title="Введите имя пользователя"
-                    required
                 />
-                <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+                {errors.name && (<span className='auth__input-error '>{errors.name.message}</span>)}
+
 
                 <h3 className="auth__hint">E-mail</h3>
                 <input
                     className="auth__input"
-                    onChange={handleEmail}
-                    value={email}
-                    name="email"
                     type="email"
                     placeholder="Введите E-mail"
-                    minLength="2"
-                    maxLength="30"
                     title="Введите адрес электронной почты"
-                    required
+                    {...register('email', {
+                        required: 'Это поле обязательно к заполнению.',
+                        pattern: {
+                            value: isEmail,
+                            message: 'E-mail введен не верно',
+                        },
+                    })}
                 />
-                <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+                {errors.email && (<span className='auth__input-error'>{errors.email.message}</span>)}
 
                 <h3 className="auth__hint">Пароль</h3>
                 <input
                     className="auth__input"
-                    onChange={handlePassword}
-                    value={password}
-                    name="password"
                     type="password"
                     placeholder="Придумайте и введите пароль"
-                    minLength="2"
-                    maxLength="30"
+                    {...register('password', {
+                        required: 'Это поле обязательно к заполнению.',
+                        minLength: {
+                            value: 4,
+                            message: 'Пароль должен содержать минимум 4 символа',
+                        },
+                    })}
                     title="Придумайте и введите пароль"
-                    required
                 />
-                <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+                {errors.password && (<span className='auth__input-error'> {errors.password.message}</span>)}
 
-                <Link to="/movies"> <button className="auth__save" onClick={handleSubmit}>Зарегистрироваться</button></Link>
+                <Link to="/movies"> <button
+                    className={`${isValid ? 'auth__save-active' : 'auth__save-inactive'}`}
+                    onClick={handleSubmit(handleFormSubmit)}>
+                    Зарегистрироваться
+                </button>
+                </Link>
 
                 <footer className="auth__footer" >
                     <p className="auth__question-link">Уже зарегистрированы?</p>

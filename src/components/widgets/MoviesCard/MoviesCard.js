@@ -13,7 +13,7 @@ const MoviesCard = ({ isNewFilm, cardMovie, savedMovies, onMovieLike }) => {
     let savedMovie = savedMovies?.find(x => { return x.movieId === cardMovie.id })
 
     const handleMovieLike = () => {
-        
+
         if (isNewFilm && !savedMovie) {
             let model = {
                 country: cardMovie.country,
@@ -37,19 +37,13 @@ const MoviesCard = ({ isNewFilm, cardMovie, savedMovies, onMovieLike }) => {
         }
 
         else {
-           let id = isNewFilm ? savedMovie._id : cardMovie._id          
+            let id = isNewFilm ? savedMovie._id : cardMovie._id
             deleteSavedMoviesApi(id)
                 .then(() => {
                     onMovieLike()
                 })
-
-
         }
-
-        //else console.log("кнопка удаления в сохранённых фильмах");
     }
-
-
 
     return (
         <div className='card-movie'>
@@ -57,13 +51,13 @@ const MoviesCard = ({ isNewFilm, cardMovie, savedMovies, onMovieLike }) => {
                 rel='noreferrer'
                 target='_blank'
                 className='card-movie__img-container'>
-                <img className="card-movie__img" src={isNewFilm ? `${BASE_IMAGE_URL}${cardMovie.image.url}`: cardMovie.image}
+                <img className="card-movie__img" src={isNewFilm ? `${BASE_IMAGE_URL}${cardMovie.image.url}` : cardMovie.image}
                     alt="Картинка с фильмом" />
             </a>
             <div className='card-movie__title-container'>
                 <h2 className='card-movie__title-movie'>{cardMovie.nameRU}</h2>
                 {isNewFilm ? <ButtonSave handleMovieLike={handleMovieLike} isSaved={savedMovie !== undefined} />
-                    : <ButtonDelete onDelete={handleMovieLike}/>}
+                    : <ButtonDelete onDelete={handleMovieLike} />}
             </div>
             <p className='card-movie__time'>{convertTime(cardMovie.duration)}</p>
         </div>

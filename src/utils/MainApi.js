@@ -4,7 +4,7 @@ function checkRes(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
-export const register = ({
+export const registerMain = ({
     name,
     email,
     password
@@ -74,6 +74,7 @@ export const saveMovieApi = (movie) =>
         .catch((error) => {
             console.error(error);
         });
+        
 
 export const getSavedMoviesApi = () =>
     fetch(`${BASE_URL_MAIN}/movies`, {
@@ -141,7 +142,3 @@ export const updateUserApi = (data) =>
         .catch((error) => {
             console.error(error);
         });
-
-
-    // fetchGetMe() { return this.fetchApi("/users/me", "GET"); }
-    // fetchUpdateMe(data) { return this.fetchApi("/users/me", "PATCH", data); }

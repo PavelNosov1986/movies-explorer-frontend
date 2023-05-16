@@ -4,8 +4,7 @@ import HeaderProfile from '../widgets/HeaderProfile/HeaderProfile'
 import { Link } from 'react-router-dom';
 import { getMeApi, updateUserApi } from '../../utils/MainApi';
 
-
-const Profile = () => {
+const Profile = ({ isLoggedIn }) => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
 
@@ -27,10 +26,15 @@ const Profile = () => {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        updateUserApi({name: name, email: email}).then((response)=>{
+        updateUserApi({ name: name, email: email }).then((response) => {
             setEmail(response.email)
             setName(response.name)
         })
+    }
+
+    function exitAuth() {
+        localStorage.clear();
+        isLoggedIn()        
     }
 
     return (
@@ -77,10 +81,10 @@ const Profile = () => {
                         <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
                     </div>
 
-                    <button className="auth__save auth__save_profile">Редактировать</button>
+                    <button className="auth__save-active auth__save_profile">Редактировать</button>
 
                     <footer className="auth__footer" >
-                        <Link to="/" className="auth__signup-link auth__signup-link_profile">Выйти из аккаунта</Link>
+                        <Link to="/" className="auth__signup-link auth__signup-link_profile" onClick={exitAuth}>Выйти из аккаунта</Link>
                     </footer>
 
                 </form>

@@ -13,7 +13,6 @@ let initStorageData = {
     isToggleSaved: false
 }
 
-
 const SavedMovies = ({ isMoviesPage }) => {
     const [savedMovies, setSavedMovies] = useState();
 
