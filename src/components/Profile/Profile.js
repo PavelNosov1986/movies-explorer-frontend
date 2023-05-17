@@ -4,16 +4,32 @@ import HeaderProfile from '../widgets/HeaderProfile/HeaderProfile'
 import { Link } from 'react-router-dom';
 import { getMeApi, updateUserApi } from '../../utils/MainApi';
 
+
 const Profile = ({ isLoggedIn }) => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
+    const [nameCurrent, setNameCurrent] = useState();
+    const [emailCurrent, setEmailCurrent] = useState();
+    const [isButton, setIsButton] = useState(false);
+
 
     useEffect(() => {
         getMeApi().then((response) => {
             setEmail(response.email)
             setName(response.name)
+            setEmailCurrent(response.email)
+            setNameCurrent(response.name)
         })
     }, []);
+
+    useEffect(() => {
+        if (email === '' || name === '') {
+            setIsButton(false)
+        }
+        else if (name === nameCurrent && email === emailCurrent) { setIsButton(false) }
+        else
+            setIsButton(true)
+    }, [name, email]);
 
 
     function handleEmail(evt) {
@@ -34,7 +50,7 @@ const Profile = ({ isLoggedIn }) => {
 
     function exitAuth() {
         localStorage.clear();
-        isLoggedIn()        
+        isLoggedIn()
     }
 
     return (
@@ -45,7 +61,7 @@ const Profile = ({ isLoggedIn }) => {
             <main className="auth auth_profile">
                 <h2 className='auth__welcome'>Привет, {name}!</h2>
 
-                <form className="auth__form auth__form_profile" onSubmit={handleSubmit} >
+                <form className="auth__form auth__form_profile" onSubmit={handleSubmit}  >
 
                     <div className='profile__input-container'>
                         <h3 className="auth__hint auth__hint_profile">Имя</h3>
@@ -59,7 +75,7 @@ const Profile = ({ isLoggedIn }) => {
                             minLength="2"
                             maxLength="200"
                             title="Введите имя пользователя"
-                            required
+
                         />
                         <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
                     </div>
@@ -81,7 +97,8 @@ const Profile = ({ isLoggedIn }) => {
                         <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
                     </div>
 
-                    <button className="auth__save-active auth__save_profile">Редактировать</button>
+                    <button disabled={!isButton} className={`${isButton ? 'auth__save_profile-active'
+                        : 'auth__save_profile-inactive'}`}>Редактировать</button>
 
                     <footer className="auth__footer" >
                         <Link to="/" className="auth__signup-link auth__signup-link_profile" onClick={exitAuth}>Выйти из аккаунта</Link>

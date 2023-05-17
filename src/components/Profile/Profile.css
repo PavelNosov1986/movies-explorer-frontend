@@ -24,26 +24,47 @@
 
 }
 
+
 .auth__form_profile {
     margin-top: 91px;
 }
 
-.auth__save_profile {
+.auth__save_profile-active {
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
+    text-align: center;
+    color: green;
     background: none;
+    border: none;
+    margin-top: 86px;
     height: 30px;
     padding: 0;
     margin-top: 198px;
     transition: 0.5s linear;
 }
 
-.auth__save_profile:hover {
+.auth__save_profile-active:hover {
     font-size: 15px;
-    background: green;
     cursor: pointer;
 }
+
+.auth__save_profile-inactive {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #EE3465;
+    background: none;
+    height: 30px;
+    padding: 0;
+    border: none;
+    margin-top: 86px;
+    margin-top: 198px;
+    transition: 0.5s linear;
+}
+
+
 
 .auth__signup-link_profile {
     font-weight: 500;
