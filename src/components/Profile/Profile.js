@@ -12,7 +12,7 @@ const Profile = ({ isLoggedIn }) => {
     const [nameCurrent, setNameCurrent] = useState();
     const [emailCurrent, setEmailCurrent] = useState();
     const [isButton, setIsButton] = useState(false);
-    const [isModal, setModal] = useState(false);
+    const [isModal, setIsModal] = useState(false);
 
 
     useEffect(() => {
@@ -47,7 +47,9 @@ const Profile = ({ isLoggedIn }) => {
         updateUserApi({ name: name, email: email }).then((response) => {
             setEmail(response.email)
             setName(response.name)
-            setModal(true)
+            setNameCurrent(response.name)
+            setEmailCurrent(response.email)
+            setIsModal(true)
             setIsButton(false)
         })
     }
@@ -62,7 +64,7 @@ const Profile = ({ isLoggedIn }) => {
             <Modal
                 isVisible={isModal}
                 title="Изменения сохранены!"
-                onClose={() => setModal(false)}
+                onClose={() => setIsModal(false)}
             />
 
             <div className='headerProfile_profile'>
@@ -106,7 +108,7 @@ const Profile = ({ isLoggedIn }) => {
                         />
 
                     </div>
-                 
+
 
                     <button disabled={!isButton} className={`${isButton ? 'auth__save_profile-active'
                         : 'auth__save_profile-inactive'}`}>Редактировать</button>
