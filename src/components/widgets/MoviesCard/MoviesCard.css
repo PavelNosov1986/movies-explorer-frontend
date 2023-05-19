@@ -22,6 +22,9 @@
     }
 }
 
+.card-movie__img-container{
+    cursor: pointer;
+}
 
 .card-movie__img {
     width: 100%;

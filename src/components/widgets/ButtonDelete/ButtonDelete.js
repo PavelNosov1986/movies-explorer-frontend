@@ -1,11 +1,10 @@
 import React from 'react';
-import './ButtonDelete.css'
 import deleteBtn from '../../../images/delete-btn.svg'
 
-const ButtonDelete = () => {
+const ButtonDelete = ({onDelete}) => {
     return (
         <>
-            <button className="card-movie__save-btn" ><img className="card-movie__save-img"
+            <button className="card-movie__save-btn" onClick={onDelete} ><img className="card-movie__save-img"
                 src={deleteBtn} alt="Сохранить" /></button>
         </>
     );

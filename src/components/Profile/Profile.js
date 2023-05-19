@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css'
 import HeaderProfile from '../widgets/HeaderProfile/HeaderProfile'
 import { Link } from 'react-router-dom';
+import { getMeApi, updateUserApi } from '../../utils/MainApi';
+import Modal from '../widgets/Modal/Modal';
 
 
-const Profile = () => {
-    const [name, setName] = useState('Павел');
-    const [email, setEmail] = useState('nosovpp86@gmail.com');
+const Profile = ({ isLoggedIn }) => {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [nameCurrent, setNameCurrent] = useState();
+    const [emailCurrent, setEmailCurrent] = useState();
+    const [isButton, setIsButton] = useState(false);
+    const [isModal, setIsModal] = useState(false);
+
+
+    useEffect(() => {
+        getMeApi().then((response) => {
+            setEmail(response.email)
+            setName(response.name)
+            setEmailCurrent(response.email)
+            setNameCurrent(response.name)
+        })
+    }, []);
+
+    useEffect(() => {
+        if (email === '' || name === '') {
+            setIsButton(false)
+        }
+        else if (name === nameCurrent && email === emailCurrent) { setIsButton(false) }
+        else
+            setIsButton(true)
+    }, [name, email]);
+
 
     function handleEmail(evt) {
         setEmail(evt.target.value);
@@ -18,17 +44,36 @@ const Profile = () => {
 
     function handleSubmit(evt) {
         evt.preventDefault();
+        updateUserApi({ name: name, email: email }).then((response) => {
+            setEmail(response.email)
+            setName(response.name)
+            setNameCurrent(response.name)
+            setEmailCurrent(response.email)
+            setIsModal(true)
+            setIsButton(false)
+        })
+    }
+
+    function exitAuth() {
+        localStorage.clear();
+        isLoggedIn()
     }
 
     return (
         <>
+            <Modal
+                isVisible={isModal}
+                title="Изменения сохранены!"
+                onClose={() => setIsModal(false)}
+            />
+
             <div className='headerProfile_profile'>
                 <HeaderProfile />
             </div>
             <main className="auth auth_profile">
                 <h2 className='auth__welcome'>Привет, {name}!</h2>
 
-                <form className="auth__form auth__form_profile" onSubmit={handleSubmit} >
+                <form className="auth__form auth__form_profile" onSubmit={handleSubmit}  >
 
                     <div className='profile__input-container'>
                         <h3 className="auth__hint auth__hint_profile">Имя</h3>
@@ -42,7 +87,7 @@ const Profile = () => {
                             minLength="2"
                             maxLength="200"
                             title="Введите имя пользователя"
-                            required
+
                         />
                         <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
                     </div>
@@ -61,13 +106,15 @@ const Profile = () => {
                             title="Введите адрес электронной почты"
                             required
                         />
-                        <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+
                     </div>
 
-                    <button className="auth__save auth__save_profile">Редактировать</button>
+
+                    <button disabled={!isButton} className={`${isButton ? 'auth__save_profile-active'
+                        : 'auth__save_profile-inactive'}`}>Редактировать</button>
 
                     <footer className="auth__footer" >
-                        <Link to="/" className="auth__signup-link auth__signup-link_profile">Выйти из аккаунта</Link>
+                        <Link to="/" className="auth__signup-link auth__signup-link_profile" onClick={exitAuth}>Выйти из аккаунта</Link>
                     </footer>
 
                 </form>

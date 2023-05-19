@@ -8,13 +8,16 @@ import NavTab from "../NavTab/NavTab";
 import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 import Portfolio from '../Portfolio/Portfolio';
+import HeaderSelect from '../widgets/HeaderSelect/HeaderSelect';
 
-const Main = () => {
+const Main = ({ isLoggedIn }) => {
   return (
     <main className='main'>
-      <Header />
+      <div className='background'>
+      {isLoggedIn ? <HeaderSelect /> : <Header />}
       <Promo />
-      <NavTab />
+      </div>
+        <NavTab />
       <AboutProject />
       <Techs />
       <AboutMe />

@@ -1,12 +1,17 @@
 import React from 'react';
 import './Toggle.css'
 
-const Toggle = () => {
+const Toggle = ({ value, onChange }) => {
+
+    function handleChange() {
+        onChange()
+    }
+
     return (
         <main className='toggle'>
-                       <label className="switch">
-                <input type="checkbox" />
-                <span class="slider round"></span>
+            <label className="switch">
+                <input type="checkbox" onChange={handleChange} checked={value} />
+                <span className="slider round"></span>
             </label>
         </main>
     );
