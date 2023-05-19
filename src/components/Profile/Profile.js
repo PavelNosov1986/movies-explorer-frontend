@@ -3,6 +3,7 @@ import './Profile.css'
 import HeaderProfile from '../widgets/HeaderProfile/HeaderProfile'
 import { Link } from 'react-router-dom';
 import { getMeApi, updateUserApi } from '../../utils/MainApi';
+import Modal from '../widgets/Modal/Modal';
 
 
 const Profile = ({ isLoggedIn }) => {
@@ -11,6 +12,7 @@ const Profile = ({ isLoggedIn }) => {
     const [nameCurrent, setNameCurrent] = useState();
     const [emailCurrent, setEmailCurrent] = useState();
     const [isButton, setIsButton] = useState(false);
+    const [isModal, setModal] = useState(false);
 
 
     useEffect(() => {
@@ -45,6 +47,8 @@ const Profile = ({ isLoggedIn }) => {
         updateUserApi({ name: name, email: email }).then((response) => {
             setEmail(response.email)
             setName(response.name)
+            setModal(true)
+            setIsButton(false)
         })
     }
 
@@ -55,6 +59,12 @@ const Profile = ({ isLoggedIn }) => {
 
     return (
         <>
+            <Modal
+                isVisible={isModal}
+                title="Изменения сохранены!"
+                onClose={() => setModal(false)}
+            />
+
             <div className='headerProfile_profile'>
                 <HeaderProfile />
             </div>
@@ -94,8 +104,9 @@ const Profile = ({ isLoggedIn }) => {
                             title="Введите адрес электронной почты"
                             required
                         />
-                        <span className="auth__input-error auth__input-error_none">Что-то пошло не так...</span>
+
                     </div>
+                 
 
                     <button disabled={!isButton} className={`${isButton ? 'auth__save_profile-active'
                         : 'auth__save_profile-inactive'}`}>Редактировать</button>
